@@ -1,0 +1,24 @@
+<script>
+	var PluralsightButtonProto = Object.create(HTMLButtonElement.prototype);
+	
+	PluralsightButtonProto.createdCallback = function(){
+		this.innerHTML = "Pluralsight Button";
+		this.style.color = "orange";
+	}
+
+	
+	var PluralsightButton = document.registerElement('pluralsight-button', {
+		prototype: PluralsightButtonProto,
+		extends: 'button'
+	});
+	
+
+	document.body.appendChild(new PluralsightButton ());
+	var button = document.createElement('button', 'pluralsight-button');
+	document.body.appendChild(button);
+
+	
+</script>
+
+
+<button is="pluralsight-button"></button>

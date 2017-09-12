@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://polygit.org/Polymer+:1.6.1/components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="https://polygit.org/Polymer+:1.6.1/components/polymer/polymer.html" />
+</head>
+<body>
+  <alert-element></alert-element>
+  <dom-module id="alert-element">
+    <template>
+      Secure Messages:
+      <br/>
+      <template is="dom-if" if="{{isSecureMessage}}">
+        Super Secure! <span>{{message}}</span>
+      </template>
+    </template>
+  </dom-module>
+  <script>
+    HTMLImports.whenReady(function() {
+      Polymer({
+        is: "alert-element",
+        properties: {
+          message: {
+            type: String,
+            value: "This message is super secure. It will self-destruct."
+          },
+          isSecureMessage: {
+            type: Boolean,
+            value: false
+          }
+        },
+        ready: function() {
+          var self = this;
+          self.isSecureMessage = true;
+          setTimeout(function(){
+              self.isSecureMessage = false;
+          }, 3000);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

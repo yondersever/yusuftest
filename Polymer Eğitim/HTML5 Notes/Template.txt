@@ -1,0 +1,14 @@
+<template id="testTemplate">
+	<p> Test Template</p>
+	<span class="test"></span>
+</template>
+
+
+<script>
+	var template = document.querySelector('#testTemplate');
+	var clone = document.importNode(template.content, true);
+	
+	clone.querySelector('.test').textContent = "Test Text";
+
+	document.body.appendChild(clone);
+</script>

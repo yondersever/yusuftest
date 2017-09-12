@@ -1,0 +1,34 @@
+<script>
+	var PluralsightCommentProto = Object.create(HTMLElement.prototype);
+	
+	PluralsightCommentProto.createdCallback = function(){
+		this.innerHTML = "<h2>Pluralsight Comment</h2>";
+	}
+	
+	PluralsightCommentProto.attachedCallback = function(){
+		console.log('attached');
+	}
+	
+	PluralsightCommentProto.detachedCallback = function(){
+		console.log('detached');
+	}
+	
+	PluralsightCommentProto.attributeChangedCallback = function(attrName, oldValue, newValue){
+		console.log(attrName + "," + oldValue + "," + newValue);
+	}
+	
+	var PluralsightComment = document.registerElement('pluralsight-comment', {
+		prototype: PluralsightCommentProto
+	});
+	
+	var comment = new PluralsightComment();
+	document.body.appendChild(comment);
+	
+	var comment = document.createElement('pluralsight-comment');
+	document.body.appendChild(comment);
+
+	
+</script>
+
+
+<pluralsight-comment></pluralsight-comment>

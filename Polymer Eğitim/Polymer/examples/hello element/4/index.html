@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="components/webcomponents-lite.min.js"></script>
+    <link href="components/polymer/polymer.html" rel="import">
+    <link rel="import" href="elements/hello-element.html"/>  
+  </head>
+     
+  <body unresolved>  
+  
+  <input type="text" is="hello-element"/>
+
+   <script>
+   HTMLImports.whenReady(function(){
+     HelloElement = Polymer({
+       is: "hello-element",
+       extends: "input",
+       created: function(){
+         this.value = "Hello there";
+       }
+     }); 
+     
+     var el = document.createElement('input', 'hello-element');
+     document.querySelector("body").appendChild(el);
+   }) 
+</script>
+
+  </body>
+
+</html>

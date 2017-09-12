@@ -1,0 +1,22 @@
+<template id="myTemp">
+  <style>
+    color:red;
+  </style>
+  
+  <p>
+    Test deneme
+  </p>
+</template>
+
+<script>
+  const $owner = (document._currentScript || document.currentScript).ownerDocument;
+  const $temp = $owner.querySelector("#myTemp");
+  
+  class MyComponent extends HTMLElement{
+    connectedCallback(){
+      const $content = document.importNode($temp.content, true);
+      this.appendChild($content);
+    }
+  }
+  window.customElements.define("my-component",MyComponent);
+</script>

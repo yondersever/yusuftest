@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  </head>
+   
+  <body>
+   <template id="list-item">
+     <li>
+       <h1>Title</h1>
+       <p>Description</p>
+     </li>
+   </template>
+   
+   <ul id="item-list"></ul>
+   
+   <script>
+    const items = [{title:"title1", desc:"desc1"},{title:"title1", desc:"desc1"}];
+    const template = document.querySelector("#list-item");
+    const itemList = document.querySelector("#item-list");
+    
+    items.forEach((item) => {
+      const clone = document.importNode(template.content, true);
+      clone.querySelector("h1").innerHTML = item.title;
+      clone.querySelector("p").innerHTML = item.desc;
+      itemList.appendChild(clone);
+    });
+   </script>
+   
+  </body>
+  
+
+</html>

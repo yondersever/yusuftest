@@ -1,0 +1,32 @@
+ <body>
+    <div id="host"></div>
+    
+    <script>
+      var host = document.getElementById("host");
+      var root = host.createShadowRoot();
+      root.innerHTML = "<h2>Root</h2>"
+    </script>
+    
+  </body>
+  
+  
+  <body>
+	  <div id="host"></div>
+
+	  <template>
+		<style>
+			h2{ color:red;}
+		</style>
+		
+		<h2>Root</h2>
+	  </template>
+
+
+	  <script>
+		var template = document.querySelector("template");
+		var host = document.getElementById("host");
+		var root = host.createShadowRoot();
+		root.appendChild(document.importNode(template.content, true));
+	  </script>
+
+</body>

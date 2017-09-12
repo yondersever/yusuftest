@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  </head>
+
+  <body>
+    
+    <comment-form>
+      <h1>Tell us what's on your mind!</h1>
+      <p>asdasd</p>
+    </comment-form>
+    
+    <template>
+      <fieldset>
+        <legend>
+          <content select="h1"></conten>
+        </legend>
+        <content select="p"></content>
+        <textarea style="width:400px;height:200px;"></textarea>
+      <br/>
+      <input type="submit" value="Submit Comment">
+      
+      <content select=".footer"></content>
+      </fieldset>
+    </template>
+    
+    
+    <script>
+      var CommentProto = Object.create(HTMLElement.prototype);
+      CommentProto.createdCallback = function(){
+        var template = document.querySelector('template');
+        var shadow = this.createShadowRoot();
+        shadow.appendChild(document.importNode(template.content,true));
+      }
+      
+      document.registerElement('comment-form', {
+        prototype: CommentProto
+      });
+    </script>
+    
+  </body>
+
+</html>

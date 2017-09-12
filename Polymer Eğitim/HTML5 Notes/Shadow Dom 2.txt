@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  </head>
+
+  <body>
+    
+    <div id="host">
+      Light DOM
+    </div>
+    
+    
+  
+    
+    <script>
+      var host = document.querySelector('#host');
+      var root1 = host.createShadowRoot();
+      var root2 = host.createShadowRoot();
+      var root3 = host.createShadowRoot();
+      root1.innerHTML = '<div>Root 1</div>';
+      root2.innerHTML = '<shadow></shadow><span> Root 2</span><content></content>';
+      root3.innerHTML = '<div>Root 3 </div> <shadow></shadow>';
+      
+      console.log(root2.olderShadowRoot == root1);
+      console.log(host.shadowRoot == root3) 
+    </script>
+    
+  </body>
+
+</html>

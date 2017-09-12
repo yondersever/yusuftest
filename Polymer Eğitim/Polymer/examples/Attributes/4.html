@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://bstavroulakis.com/pluralsight/polymer/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="https://bstavroulakis.com/pluralsight/polymer/bower_components/polymer/polymer.html" />
+</head> 
+<body>
+  <alert-element></alert-element>
+  <dom-module id="alert-element">
+    <template>
+      <div>{{message.text}}</div>
+    </template>
+  </dom-module>
+  <script>
+    HTMLImports.whenReady(function() {
+      Polymer({
+        is: "alert-element",
+        properties: {
+          message: { 
+            type: Object,
+            value: function() {
+              return {
+                text: "You have completed this task successfully",
+                status: "success"
+              }
+            }
+          }
+        },
+        ready: function() {
+          //this.message.text = "Successfully Loaded"; //Step 1
+          //this.message = { text: "Successfully Loaded", status: "success" } //Step 2
+          //this.notifyPath( "message.text", "Successfully Loaded" ); //Step 3
+          this.set( "message.text", "Successfully Loaded" ) //Step 4
+        }
+      });
+    });
+  </script>
+</body>
+</html>

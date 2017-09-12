@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  </head>
+   
+  <body>
+   <p>asd aasd</p>
+    <div id="my-div">
+      <p> test deneme</p>
+    </div>
+    
+    <script>
+      let $div = document.querySelector("#my-div");
+      $div.attachShadow({mode: "open"});
+      $div.shadowRoot.innerHTML = "<style>p{color:blue}</style><p>Shadow text</p>"; 
+    </script>
+    
+  </body>
+  
+
+</html>

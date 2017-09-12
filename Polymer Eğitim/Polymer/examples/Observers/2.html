@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://bstavroulakis.com/pluralsight/polymer/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="https://bstavroulakis.com/pluralsight/polymer/bower_components/polymer/polymer.html" />
+</head>
+<body>
+  <alert-element></alert-element>
+  <script>
+    HTMLImports.whenReady(function() {
+      Polymer({
+        is: 'alert-element',
+        properties: {
+          messages: {
+            type: Array,
+            value: function() {
+              return [{
+                text: 'Loading Messages'
+              }, {
+                text: 'Messages Loaded'
+              }];
+            }
+          }
+        },
+        observers: [
+          'messagesAddedOrRemoved(messages.splices)'
+        ],
+        messagesAddedOrRemoved: function(changeRecord) {
+          console.log(JSON.stringify(changeRecord)); 
+          // Array Observation Step 2 
+          if (!changeRecord) {
+            return;
+          }
+          changeRecord.indexSplices.forEach(function(s) {
+            console.log(s.index + ' position where the splice started');
+            s.removed.forEach(function(item) {
+              console.log(item.text + ' was removed');
+            });
+            console.log(s.addedCount + ' items were added');
+          }, this);
+          console.log('--------------');
+        }, 
+        ready: function() {
+          this.splice('messages', 0, 1); // Array Mutation Step 1
+          this.push('messages', {
+            text: 'Message Added'
+          }, {
+            text: 'Message Added1' 
+          }); // Array Mutation Step 1 
+        }
+      });
+    });
+  </script>
+</body>
+</html>
